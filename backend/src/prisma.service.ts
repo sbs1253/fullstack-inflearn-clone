@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 
 // Mock Prisma Client for testing purposes when network is limited
-interface TestModel {
+export interface TestModel {
   id: string;
 }
 
