@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.prisma": "prisma"
+  },
+  "prisma.format.enable": true,
+  "prisma.validate.enable": true
+}
