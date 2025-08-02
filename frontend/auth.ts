@@ -24,16 +24,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         // 2. DB에서 유저를 찾는다.
+        console.log('로그인 시도 이메일:', credentials.email);
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email as string },
         });
         if (!user) {
+          console.log('유저를 찾을 수 없음:', credentials.email);
           throw new Error('존재하지 않는 유저입니다.');
         }
 
+        console.log('유저 찾음:', user.email);
+        console.log('저장된 해시:', user.hashedPassword?.substring(0, 20) + '...');
+
         // 3. 비밀번호가 일치하는지 확인한다.
         const passwordMatch = comparePassword(credentials.password as string, user.hashedPassword as string);
+
+        console.log('비밀번호 매치 결과:', passwordMatch);
 
         if (!passwordMatch) {
           throw new Error('비밀번호가 일치하지 않습니다.');
