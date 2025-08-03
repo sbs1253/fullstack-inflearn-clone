@@ -56,10 +56,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   jwt: {
     encode: async ({ token, secret }) => {
-      return jwt.sign(token as jwt.JwtPayload, secret as string);
+      console.log('JWT 토큰 생성 중...', token);
+      const jwtToken = jwt.sign(token as jwt.JwtPayload, secret as string);
+      console.log('생성된 JWT 토큰:', jwtToken);
+      return jwtToken;
     },
     decode: async ({ token, secret }) => {
-      return jwt.verify(token as string, secret as string) as JWT;
+      console.log('JWT 토큰 디코딩 중...', token);
+      try {
+        const decoded = jwt.verify(token as string, secret as string) as JWT;
+        console.log('디코딩된 토큰:', decoded);
+        return decoded;
+      } catch (error) {
+        console.error('JWT 토큰 디코딩 실패:', error);
+        throw error;
+      }
     },
   },
   pages: {},
