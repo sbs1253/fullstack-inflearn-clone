@@ -84,14 +84,14 @@ model Course {
   price            Int      @default(0)
   discountPrice    Int?     @map("discount_price")
   level            String   @default("BEGINEER")
-  status           String   @default("DRAFT")
   instructorId     String   @map("instructor_id")
+  isPublished      Boolean  @default(false) @map("is_published")
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
 
   sections    Section[]
   lectures    Lecture[]
-  categories  CourseCategory[]
+  category    CourseCategory[]
   enrollments CourseEnrollment[]
   instructor  User               @relation(fields: [instructorId], references: [id])
   reviews     CourseReview[]

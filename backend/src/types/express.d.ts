@@ -1,15 +1,19 @@
-export interface JwtPayload {
+export type JwtPayload = {
   sub: string;
-  email: string;
+  email?: string;
   name?: string;
-  picture?: string | null;
+  picture?: null;
   iat?: number;
-}
+};
 
 declare global {
   namespace Express {
-    interface Request {
-      user?: JwtPayload;
+    interface User {
+      sub: string;
+      email?: string;
+      name?: string;
+      picture?: null;
+      iat?: number;
     }
   }
 }
