@@ -21,7 +21,7 @@ export default function ClientTest() {
   return (
     <div className="p-8">
       <h1>클라이언트 테스트</h1>
-      <p>클라이언트에서 받은 데이터: {data}</p>
+      {/* <p>클라이언트에서 받은 데이터: {data?.data}</p> */}
     </div>
   );
 }
