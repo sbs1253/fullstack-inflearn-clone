@@ -17,5 +17,9 @@ declare global {
     }
   }
 }
-
+declare module 'express-serve-static-core' {
+  interface Request {
+    user: Express.User; // ✅ 옵셔널 제거(필수)
+  }
+}
 export {};
