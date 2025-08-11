@@ -1,7 +1,12 @@
 'use server';
-import { appControllerTestUser } from '@/generated/openapi-client';
+import { categoriesControllerFindAll, coursesControllerFindAll } from '@/generated/openapi-client';
 
-export async function getUserTest(token?: string) {
-  const { data, error } = await appControllerTestUser();
+export async function getAllCategories() {
+  const { data, error } = await categoriesControllerFindAll();
+  return { data, error };
+}
+
+export async function getAllInstructorCourses() {
+  const { data, error } = await coursesControllerFindAll();
   return { data, error };
 }
