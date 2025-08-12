@@ -28,7 +28,7 @@ export default async function RootLayout({
   const categories = await getAllCategories();
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`container mx-auto ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <SiteHeader categories={categories.data ?? []} />
           {children}
